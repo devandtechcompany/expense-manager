@@ -1,0 +1,44 @@
+<nav class="sidebar" xmlns:th="http://www.thymeleaf.org">
+    <div class="sidebar-inner">
+      <header class="sidebar-header">
+        <button type="button" class="sidebar-menu-collapse" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <!--<img src="./assets/blocklord-logo.png" class="sidebar-logo">-->
+        <a href="@{/}" class="sidebar-header-text">Expense Manager</a>
+      </header>
+      <nav class="sidebar-menu">
+        <ul>
+          <li>
+            <a class="" th:href="@{~/group/form}">
+                <i class="fas fa-users"></i> <span th:text="#{menu.group.label}"></span>
+            </a>
+          </li>
+          <li>
+            <a class="" th:href="@{~/category/form}">
+              <i class="fa-solid fa-box-open"></i> <span class="" th:text="#{menu.category.label}"></span>
+            </a>
+          </li>                  
+          <li>
+            <a class="" th:href="@{~/expense/form}">
+              <i class="fa-solid fa-file-invoice-dollar"></i> <span class="" th:text="#{menu.expense.label}"></span>
+            </a>
+          </li>             
+          <li class="sidebar-menu-header-text">
+            <span class="" th:text="#{menu.profile.label}"></span>
+          </li>              
+          <li>
+            <a class="" href="{{path('app_issuer_form')}}">
+              <i class="fas fa-gear"></i> <span class="" th:text="#{menu.configuration.label}"></span>
+            </a>
+          </li>
+        <ul>
+      </nav>
+    </div>
+    <!--<footer class="sidebar-footer">
+        <button type="button">
+          <img src="./assets/icon-lock.svg">
+          <span>Logout</span>
+        </button>
+      </footer>-->
+  </nav> 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+    <head th:replace="fragments :: common_header(~{::title},~{::style})">
+        <title>Group Form</title>
+        <style>
+            .wrong {
+                color: #f44336 !important;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section class="container">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">Group</li>
+            </ol>
+        </nav>
+        <div class="card">
+            <div class="card-body">
+                <form class="mb-3" th:action="@{/group/form}" th:method="POST" th:object="${group}">                
+                    <div class="row mb-3">                        
+                        <div class="col-6">
+                            <label class="form-label">Name</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                <input class="form-control" type="text" th:value="*{name}" placeholder=""/>
+                            </div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                            <div class="ef-error text-danger" error-field="name"></div>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">Descripcion</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                <input class="form-control" type="text" th:value="*{description}" placeholder=""/>
+                            </div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                            <div class="ef-error text-danger" error-field="description"></div>
+                        </div>
+                    </div>
+                <div class="col-s12 text-center mt-4 mb-0">
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </section>    
+        <th:block layout:replace="~{fragments :: scripts}"/>
+    </body>
+
+</html>

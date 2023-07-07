@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Expense Login </title>
+        <link th:href="@{webjars/bootstrap/5.2.3/css/bootstrap.min.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">                                    
+                                    <div class="card-body">
+                                        <h3 class="mb-5 text-center">Login</h3>
+                                        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                                            Invalid username and password.
+                                        </div>
+                                        <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                                            You have been logged out.
+                                        </div>
+                                        <form class="mb-3" th:action="@{/login}" method="post">
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">Email</label>
+                                                <input type="text" class="form-control" id="username" name="email" placeholder="" autofocus="" />
+                                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="" autofocus=""/>                                                
+                                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                                            </div>
+                                            
+                                           <div class="form-check mb-3">
+                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" name="_remember_me"/>
+                                                <label class="form-check-label" for="inputRememberPassword">Recordar Contraseña</label>
+                                            </div>
+                                            <div class="col-s12 mt-4 mb-0">
+                                                <button class="btn btn-lg btn-primary w-100" type="submit">
+                                                    Entrar
+                                                </button>
+                                            </div>        
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        <script th:src="@{webjars/jquery/3.6.4/jquery.min.js}"></script>
+        <script th:src="@{webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+    </body>
+</html>

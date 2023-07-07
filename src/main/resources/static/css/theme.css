@@ -1,0 +1,286 @@
+:root {
+  --ed-primary-color: #77216f;
+  --ed-secondary-color: #77216f;
+  --ed-primary-text-color: #516377;
+  --ed-primary-bg-color: #f5f7fb;
+  --ed-primary-bg-hover: #f6f9ff;
+  --ed-sidenav-header: 50px;
+  --ed-sidenav-incomplete-width: 60px;
+  --ed-sidenav-complete-width: 260px;
+  --ed-main-navbar-height: 50px;
+  --ed-main-background: #ffffff;
+  --ed-sidenav-background: #fff /*#77216f; /*#6d10db;*/
+  --ed-main-color:  #516377;
+  --ed-main-font-size: 0.8rem;
+  --ed-sidebar-menu-height: 45px;
+  --ed-sidebar-menu-color:  #516377;/*#f9f9f9;*/
+  --ed-font-family: "Lexend";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--ed-font-family);
+}
+
+body {
+  margin: 0;
+  background: var(--ed-primary-bg-color);
+}
+
+select, option, input, textarea, checkbox {
+  color: var(--ed-primary-text-color);
+}
+
+main {
+  color: var(--ed-primary-text-color);
+  padding-left: var(--ed-sidenav-incomplete-width);
+  height: 100%;
+  font-size: var(--ed-main-font-size) !important;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+.sidebar {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: var(--ed-sidenav-incomplete-width);
+  height: 100%;
+  background: var(--ed-sidenav-background);
+  transition: width 0.2s;
+  /*background: rgb(119,33,111);
+  background: linear-gradient(90deg, rgba(119,33,111,1) 0%, rgba(119,33,111,1) 60%, rgba(70,13,65,1) 100%);*/
+  /*box-shadow: 0 0 0 1px #d4d8dd;  */
+  scrollbar-color: #aab7cf transparent;
+}
+
+body.open .sidebar {
+  width: var(--ed-sidenav-complete-width);
+}
+
+.sidebar-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--ed-sidenav-complete-width);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  height: var(--ed-sidenav-header);
+  padding: 0 1.25rem 0 0;
+  /*background: rgba(0, 0, 0, 0.1);  */
+}
+
+.sidebar-header i {
+  color: var(--ed-primary-color);
+}
+
+.sidebar-header-text {
+  text-decoration: none;
+  font-size: 1.2rem;
+  letter-spacing: -0.45px;
+  font-weight: 700;
+  color: var(--ed-primary-color);
+}
+
+.sidebar-header-text:hover {
+  cursor: pointer;
+  color: var(--ed-secondary-color) !important;
+}
+
+.sidebar-menu-collapse {
+  width: var(--ed-sidenav-incomplete-width);
+  height: var(--ed-sidenav-incomplete-width);
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+}
+
+
+.sidebar-logo {
+  height: 20px;
+}
+
+.sidebar-menu {
+  display: grid;
+  max-height: calc(100vh - var(--ed-sidenav-header));
+  /*height: calc(100% - var(--ed-sidenav-header));*/
+  overflow: auto;
+}
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  height: 45px;
+  font-family: "Lexend";
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 2px;
+  line-height: 1;
+  padding: 0 25px !important;
+  user-select: none;
+  cursor: pointer;
+}
+
+.sidebar-menu li:hover:not(.sidebar-menu-header-text) {
+  background-color: var(--ed-primary-bg-hover);
+  transition: all 0.5s;
+}
+
+.sidebar-menu li:hover:not(.sidebar-menu-header-text) i, .sidebar-menu li:hover:not(.sidebar-menu-header-text) span, .sidebar-menu li:hover:not(.sidebar-menu-header-text) a  {
+  color: var(--ed-primary-color) !important;
+}
+
+
+.sidebar-menu li.has-border {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 1rem;
+}
+
+.sidebar-menu li > i {
+  width: 24px;
+  height: 24px;
+  color: var(--ed-primary-text-color);
+}
+
+.sidebar-menu li > span, .sidebar-menu li > a {  
+  color: var(--ed-primary-text-color);
+  font-size: 0.85rem;
+}
+
+.sidebar-menu li > a {    
+    text-decoration: none;
+    display: flex;
+    gap: 25px;    
+    width: 100%;
+}
+
+.sidebar-menu-header-text {
+  /*display: none;*/
+  cursor: default;
+}
+
+.sidebar-menu-header-text span {
+  color: transparent !important;
+  text-transform: uppercase;
+  cursor: default;
+  font-size: 0.7rem !important;
+}
+
+body.open .sidebar-menu-header-text span {
+  color: #a8b1bb !important;
+}
+
+body.open main {
+  padding-left: var(--ed-sidenav-complete-width);
+}
+
+/************ MAIN NAVBAR **********************/
+.main-navbar {
+  position: fixed;
+  height: var(--ed-main-navbar-height);
+  line-height: var(--ed-main-navbar-height);
+  width: calc(100% - var(--ed-sidenav-incomplete-width));
+  top: 0;
+  padding: 0 20px;  
+  color: var(--ed-primary-text-color);
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  transition: all 0.5s;
+}
+
+body.open .main-navbar {
+  width: calc(100% - var(--ed-sidenav-complete-width));
+}
+
+.main-navbar-left {
+  display: inline-block;
+  float: left;
+  padding: 0;
+}
+
+.main-navbar-right {
+  float: right;
+}
+
+.main-navbar ul > li {
+  transition: background-color 0.5s;
+  float: left;
+}
+
+.main-navbar li > a {
+  transition: background-color 0.3s;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 0.9rem !important;
+  color: var(--ed-main-color);  
+}
+
+.main-navbar li > a:hover {
+  transition: all 0.5s;
+  color: var(--ed-primary-color);
+}
+
+
+
+.main-navbar ul > i {
+  font-size: 1rem !important
+}
+
+
+/************ MAIN CONTENT **********************/
+
+.main-content {
+  margin-top: var(--ed-main-navbar-height);
+  height: calc(100% - var(--ed-main-navbar-height));
+  overflow: auto;
+  padding: 20px;
+}
+/********* BUTTONS **************************/
+.button-gradient {
+  font-family: "Lexend", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 50px 10px 28px;
+  border-radius: 5px;
+  transition: 0.5s;
+  color: #fff !important;
+  background: linear-gradient(45deg, #5846f9 0%, #7b27d8 100%);
+  position: relative;
+  text-decoration: none;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(119,33,111,1) 35%, rgba(203,110,194,1) 100%);
+}
+
+.button-gradient:hover {
+  background: linear-gradient(180deg, #5846f9 0%, #7b27d8 100%);
+}
+.cursor-hand {
+  cursor: pointer;  
+}
